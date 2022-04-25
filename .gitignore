@@ -1,0 +1,48 @@
+# Dependency directory
+/node_modules
+/__pycache__
+/venv
+/.venv
+
+# Book build output
+/build
+/MANIFEST
+/site
+
+# eBook build output
+*.epub
+*.mobi
+*.pdf
+
+# Chaches and logs
+*.cpuprofile
+*.logs
+*.tsbuildinfo
+.cache
+.eslintcache
+__pycache__
+
+
+# NEVER IGNORE .gitkeep
+!**/.gitkeep
+
+# Husky hooks
+.husky/.gitignore
+./husky/_
+
+# macOS internals
+.DS_Store
+
+# Temporary files
+TODO
+tmp
+
+# IDE
+.idea
+
+# for F#
+.ionide
+
+# Private Web Fonts
+docs/fonts/*
+docs/stylesheets/fonts.css

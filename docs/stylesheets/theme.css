@@ -1,0 +1,66 @@
+:root {
+    --md-primary-fg-color:          #0078d4;
+    --md-primary-fg-color--light:   #9dcbef;
+    --md-primary-fg-color--dark:    #174276;
+
+    --md-accent-fg-color:           #68afe6;
+}
+
+.kt {
+    font-weight: bolder;
+}
+
+.nv, .nc {
+    font-weight: 500;
+}
+
+.md-typeset h1 {
+    font-weight: 600;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+    font-size: 0.75rem;
+}
+
+
+
+
+[data-md-color-scheme="default"] {
+    --md-default-fg-color:          #002b36;
+    --md-default-fg-color--light:   #002636;
+
+    --md-typeset-color:             #002b36;
+
+    --md-code-bg-color:             #f3f5f6;
+    --md-code-hl-special-color:     #3e4650;
+    --md-code-hl-number-color:      #174276;
+    --md-code-hl-function-color:    #68afe6;
+    --md-code-hl-constant-color:    #778997;
+    --md-code-hl-keyword-color:     #3393d4;
+    --md-code-hl-string-color:      #576e70;
+    --md-code-hl-comment-color:     #2e7d32;
+    --md-code-hl-variable-color:    #0c5da5;
+}
+
+[data-md-color-scheme="slate"] {
+    --md-default-bg-color:          #000000;
+/*
+    --md-default-fg-color:          #e0e0e0;
+    --md-default-fg-color--light:   #f5f5f5;
+*/
+    --md-default-fg-color:          #bdbdbd;
+    --md-default-fg-color--light:   #e0e0e0;
+
+    --md-typeset-a-color:           #3393dd;
+
+    --md-code-bg-color:             #21262c;
+    --md-code-hl-special-color:     #576e7f;
+    --md-code-hl-number-color:      #9dcbef;
+    --md-code-hl-function-color:    #68afe6;
+    --md-code-hl-keyword-color:     #3393d4;
+    --md-code-hl-string-color:      #9aa7b2;
+    --md-code-hl-constant-color:    #778997;
+    --md-code-hl-comment-color:     #43a047;
+    --md-code-hl-variable-color:    #9dcbef;
+}
