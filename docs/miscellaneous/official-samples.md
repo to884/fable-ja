@@ -2,22 +2,22 @@
 
 ## Fable のサンプルをダウンロードする
 
-Fable は Node.js や ブラウザなど、さまざまな JavaScript ランタイムをターゲットにできます。Fable の使い方を簡単に調べるために、私たちは fable3-samples [Github repo](https://github.com/fable-compiler/fable3-samples)を作成しました。
+Fable は Node.js や ブラウザなど、さまざまな JavaScript ランタイムをターゲットにできます。Fable の使い方を簡単に調べるために、私たちは fable3-samples [Github repo](https://github.com/fable-compiler/fable3-samples) を作成しました。
 
 このリポジトリには、すぐに使えるサンプルがいくつか用意されてあり、それぞれが個別のフォルダに置かれています。
 
 !!! info
-    もし、バックエンド（.NET を使用）とフロントエンド（Fable を使用）の両方をカバーするフルスタックの F#ソリューションに興味があるなら、[SAFE-Stack](https://safe-stack.github.io/)をチェックしてみてください。
+    もし、バックエンド（.NET を使用）とフロントエンド（Fable を使用）の両方をカバーするフルスタックの F# ソリューションに興味があるなら、[SAFE-Stack](https://safe-stack.github.io/)をチェックしてみてください。
 
 - **ブラウザのサンプル**
 
-  - シンプルな HTML5 canvas とブラウザ DOM。_[/browser](https://github.com/fable-compiler/fable3-samples/tree/master/browser)_
+  - シンプルな HTML5 canvas とブラウザ DOM_[/browser](https://github.com/fable-compiler/fable3-samples/tree/master/browser)_
 
-  - フェッチ＆プロミス＆json パースでより複雑なブラウザアプリ。_[/promises](https://github.com/fable-compiler/fable3-samples/tree/master/promises)_。
+  - フェッチ＆プロミス＆json パースでより複雑なブラウザアプリ。_[/promises](https://github.com/fable-compiler/fable3-samples/tree/master/promises)_
 
 - **リアクトのサンプル**
 
-  - [Elm](https://elm-lang.org/)ライクな[シングルページアプリケーション(SPA)](https://en.wikipedia.org/wiki/Single-page_application)を React で実現。_[/minimal](https://github.com/fable-compiler/fable3-samples/tree/master/minimal)_。
+  - [Elm](https://elm-lang.org/) ライクな [シングルページアプリケーション(SPA)](https://en.wikipedia.org/wiki/Single-page_application)を React で実現。_[/minimal](https://github.com/fable-compiler/fable3-samples/tree/master/minimal)_。
 
   - Bulma と React を使ったフロントエンドアプリ SPA を始める(`git clone https://github.com/MangelMaxime/fulma-demo`)
 
@@ -25,7 +25,7 @@ Fable は Node.js や ブラウザなど、さまざまな JavaScript ランタ�
 
   - フェッチ＆プロミスによる Node.js アプリ。_[/nodejs](https://github.com/fable-compiler/fable3-samples/tree/master/nodejs)_。
 
-  - バンドルされた Node.js アプリ(fetch & promises 付き)。nodejsbundle](https://github.com/fable-compiler/fable3-samples/tree/master/nodejsbundle) _/[nodejsbundle](https://github.com/fable-compiler/fable3-samples/tree/master/nodejsbundle) _/[nodejsbundle](https://github.com/fable-compiler/fable3-samples/tree/master/nodejsbundle)
+  - バンドルされた Node.js アプリ(fetch & promises 付き)。_[/nodejsbundle](https://github.com/fable-compiler/fable3-samples/tree/master/nodejsbundle)_ 
 
 - **高度なサンプル**
 

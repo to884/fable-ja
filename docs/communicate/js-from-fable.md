@@ -2,7 +2,7 @@
 
 ## Fable から JavaScript を呼び出す
 
-相互運用性は、静的に型付けされた F#コードと、型付けされていない動的な JS コードとの間にある信頼の問題です。リスクを和らげるために、Fable はいくつかの方法を用意しており、そのうちの一つがインターフェース契約による型安全性です。場合によっては、もっと動的な方法で JS コードを呼び出す方が便利に思えるかもしれませんが、そうすると潜在的なバグが実行時まで見つからないので、注意が必要です。
+相互運用性は、静的に型付けされた F# コードと、型付けされていない動的な JS コードとの間にある信頼の問題です。リスクを和らげるために、Fable はいくつかの方法を用意しており、そのうちの一つがインターフェース契約による型安全性です。場合によっては、もっと動的な方法で JS コードを呼び出す方が便利に思えるかもしれませんが、そうすると潜在的なバグが実行時まで見つからないので、注意が必要です。
 
 ここでは、安全な方法と動的な方法の両方について説明し、あとはあなたの判断にお任せします。それでは始めましょう。
 
@@ -14,7 +14,7 @@
 
 ### Imports とインターフェースによる型安全性
 
-JS ライブラリのコードを使うには、まず F#にインポートする必要があります。Fable は [ES2015 imports](https://developer.mozilla.org/en/docs/web/JavaScript/reference/statements/import) を使用します。これは後で [Babel](https://babeljs.io/docs/en/plugins#modules) によって `commonjs` や `amd` など他の JS モジュールシステムへ変換することができます。
+JS ライブラリのコードを使うには、まず F# でインポートする必要があります。Fable は [ES2015 imports](https://developer.mozilla.org/en/docs/web/JavaScript/reference/statements/import) を使用します。これは後で [Babel](https://babeljs.io/docs/en/plugins#modules) によって `commonjs` や `amd` など他の JS モジュールシステムへ変換することができます。
 
 Fable で ES2015 のインポートを宣言するには、**Import 属性**と**import 式**の 2 つの方法があります。ImportAttribute` はメンバー、型、またはモジュールを修飾することができ、次のように動作します。
 
@@ -56,7 +56,7 @@ JS でグローバルにアクセスできる値であれば、代わりにオ�
 ```fsharp
 let [<Global>] console: JS.Console = jsNative
 
-// F#のコードで別の名前を使いたい場合は、文字列の引数を渡すこともできます。
+// F# コードで別の名前を使いたい場合は、文字列の引数を渡すこともできます。
 let [<Global("console")>] logger: JS.Console = jsNative
 ```
 
@@ -77,7 +77,7 @@ import styles from "../../styles/styles.module.css";
 
 #### オブジェクト指向プログラミング（OOP） クラス定義と継承
 
-JS クラスをインポートする必要があるとしたら、F#では標準的なクラス宣言に `Import` 属性を付けて表現することができます。この場合、実際の実装は JS から提供されるので、メンバーのダミー実装として `jsNative` を使います。jsNative` を用いる場合、メンバーに戻り値の型を追加するのをお忘れなく！
+JS クラスをインポートする必要があるとしたら、F# は標準的なクラス宣言に `Import` 属性を付けて表現することができます。この場合、実際の実装は JS から提供されるので、メンバーのダミー実装として `jsNative` を使います。jsNative` を用いる場合、メンバーに戻り値の型を追加するのをお忘れなく！
 
 ```fsharp
 [<Import("DataManager", from="library/data")>]
@@ -87,7 +87,7 @@ type DataManager<'Model> (conf: Config) =
     member _.update(data: 'Model): Promise<'Model> = jsNative
 ```
 
-この時点で、通常の F#で行われているように、メンバーを使ったり、継承したりすることが可能になります [F#の公式ドキュメントを参照](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/inheritance)。F#では、メンバーを継承してオーバーライドする場合、基底クラスでメンバーを `abstract` と宣言することが要求され、基底クラスから直接使用できるようにする場合は、既定の実装を用いることが必要になります。たとえば、次のようになります。
+この時点で、通常の F# で行われているように、メンバーを使ったり、継承したりすることが可能になります [F# 公式ドキュメントを参照](https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/inheritance)。F# は、メンバーを継承してオーバーライドする場合、基底クラスでメンバーを `abstract` と宣言することが要求され、基底クラスから直接使用できるようにする場合は、既定の実装を用いることが必要になります。たとえば、次のようになります。
 
 ```fsharp
 // このクラスはJSに存在します。
@@ -111,7 +111,7 @@ MyDataManager(myConfig) |> test myData
 ```
 
 !!! info
-    インポートしたい JS コードの Typescript 宣言があれば、[ts2fable](https://github.com/fable-compiler/ts2fable)を使って、F#バインディングを記述することができます。
+    インポートしたい JS コードの Typescript 宣言があれば、[ts2fable](https://github.com/fable-compiler/ts2fable) を使って、F# パインディングを記述することができます。
 
 #### 練習してみましょう! 最初の挑戦
 
@@ -194,7 +194,7 @@ export function drawBubble(id) {
   mylib.drawSmiley "smiley" // など。
 ```
 
-または、`importMember` ヘルパー関数を 使って、js 関数と F#関数を直接対応させることもできます。
+または、`importMember` ヘルパー関数を 使って、js 関数と F# 関数を直接対応させることもできます。
 
 ```fsharp
 open Fable.Core.JsInterop // interop tools を呼ぶのに必要です。
@@ -278,7 +278,7 @@ type Test() =
     member __.ParseRegex(pattern: string, ?ignoreCase: bool): Regex = jsNative
 ```
 
-`Emit` の内容は実際には [Babel](https://babeljs.io/) によってパースされるので、やはり何らかの形で検証が行われます。しかし、この方法を乱用することはお勧めしません。なぜなら、F#コンパイラによってコードがチェックされないからです。
+`Emit` の内容は実際には [Babel](https://babeljs.io/) によってパースされるので、やはり何らかの形で検証が行われます。しかし、この方法を乱用することはお勧めしません。なぜなら、F# コンパイラによってコードがチェックされないからです。
 
 #### やってみよう！ Emit を使う
 
@@ -336,7 +336,7 @@ type MyClassStatic =
 ```
 
 !!! info
-    前述の DataManager のようにダミー実装を含むクラス宣言を使うこともできますが、F#の型システムの制限を克服したり、JS クラスを値として扱えるようにするために、Fable バインディングでは JS 型のインスタンスと静的部分を二つのインターフェースに分けることが一般的であることがわかるでしょう。この場合、慣習的に `Create` はコンストラクタを表します。
+    前述の DataManager のようにダミー実装を含むクラス宣言を使うこともできますが、F# 型システムの制限を克服したり、JS クラスを値として扱えるようにするために、Fable バインディングでは JS 型のインスタンスと静的部分を二つのインターフェースに分けることが一般的であることがわかるでしょう。この場合、慣習的に `Create` はコンストラクタを表します。
 
 ここでは、JS の `new` キーワードを適用するために `Emit` 属性を使用し、MyClass のコンストラクタが受け入れる引数で JS オブジェクトを作成しています。ここで `$0` はインターフェースオブジェクト（この場合、MyClass static）を表している点に注意してください。
 
@@ -394,7 +394,7 @@ let createMyClass(value: 'T, awesomeness: 'T) : MyClass<'T> = jsNative
 
 #### Erase 属性
 
-TypeScript には [共用型](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)という考え方がありますが、これは **F#の共用型とは違います**。前者は、関数の引数が異なる型を受け入れるかどうかを静的にチェックするために使われるだけです。Fable では、それらは **Erased Union Types** と呼ばれており、そのケースは 1 つだけのデータフィールドを持たなければなりません。コンパイル後、ラップは消去され、データフィールドだけが残ります。消去された共用型を定義するには、その型に `Erase` 属性をつければいいだけです。たとえば、次のようになります。
+TypeScript には [共用型](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)という考え方がありますが、これは **F# の共用型とは違います**。前者は、関数の引数が異なる型を受け入れるかどうかを静的にチェックするために使われるだけです。Fable では、それらは **Erased Union Types** と呼ばれており、そのケースは 1 つだけのデータフィールドを持たなければなりません。コンパイル後、ラップは消去され、データフィールドだけが残ります。消去された共用型を定義するには、その型に `Erase` 属性をつければいいだけです。たとえば、次のようになります。
 
 ```fsharp
 open Fable.Core
@@ -485,7 +485,7 @@ myLib.myMethod("vertical", "Horizontal");
 !!! info
     この機能を使用するには、Fable Tool >=3.6.2 と Fable.Core >=3.6.1 が必要です。
 
-TypeScript には [判別共用体](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) という考え方もあり、これは F#の共用型と似たような働きをしますが、アプローチが若干違います。
+TypeScript には [判別共用体](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) という考え方もあり、これは F# の共用型と似たような働きをしますが、アプローチが若干違います。
 
 ```typescript
 interface Circle {
@@ -513,7 +513,7 @@ function describeShape(shape: Shape) {
 
 ここで、`Shape` は `kind` という共通のフィールドを持っており、これが共用ケースを判別するための「タグ」として働きます。
 
-F#の共用体とはまったく違った動きをしますが、特別な属性 `TypeScriptTaggedUnion` によって、まるで F#の共用体であるかのように扱うことができます。
+F# の共用体とはまったく違った動きをしますが、特別な属性 `TypeScriptTaggedUnion` によって、まるで F# の共用体であるかのように扱うことができます。
 
 ```fsharp
 type Circle =
@@ -587,7 +587,7 @@ type Shape =
     | [<CompiledValue(ShapeKind.Square)>] Square of Square
 ```
 
-これらの共用型は 1 つのデータフィールドを 1 つだけ持たなければなりません。TypeScript の判別可能な共用体の多くはインターフェースの共用体であるため、まず対応する F#インターフェースを定義し、それらをまとめて `TypeScriptTaggedUnion` にしたいところです。
+これらの共用型は 1 つのデータフィールドを 1 つだけ持たなければなりません。TypeScript の判別可能な共用体の多くはインターフェースの共用体であるため、まず対応する F# ンターフェースを定義し、それらをまとめて `TypeScriptTaggedUnion` にしたいところです。
 
 !!! info
     F# の共用体型を `TypeScriptTaggedUnion` で置き換えようとしてはいけません。これは、`match` が効率の良い `switch` ステートメントにコンパイルされるためです。そのため、`TypeScriptTaggedUnion` を使用すると、無駄なキーストロークが増えるだけで、バグが発生する可能性があります。TypeScript から来る共用型にバインドする場合のみ、この機能を使うようにしましょう。
@@ -607,7 +607,7 @@ let data =
     ]
 ```
 
-同様の効果は、新しい F# [匿名レコード](https://devblogs.microsoft.com/dotnet/announcing-f-4-6-preview/) でも行えます。
+同様の効果は、新しい F# の[匿名レコード](https://devblogs.microsoft.com/dotnet/announcing-f-4-6-preview/) でも行えます。
 
 ```fsharp
 let data =
@@ -617,7 +617,7 @@ let data =
 ```
 
 !!! info
-fable-compiler 2.3.6 以降、ダイナミックキャスト演算子 `!!! ` を使って匿名レコードをインターフェースにキャストするとき、匿名レコードのフィールドがインターフェースのものと一致しないと、Fable は警告を出します。この機能は JS との相互運用にのみ使います。F#のコードでは、実装型を持たないインターフェイスをインスタンス化するための正しい方法は [オブジェクト式](https://fsharpforfunandprofit.com/posts/object-expressions/) になっています。
+fable-compiler 2.3.6 以降、ダイナミックキャスト演算子 `!!! ` を使って匿名レコードをインターフェースにキャストするとき、匿名レコードのフィールドがインターフェースのものと一致しないと、Fable は警告を出します。この機能は JS との相互運用にのみ使います。F# コードでは、実装型を持たないインターフェイスをインスタンス化するための正しい方法は [オブジェクト式](https://fsharpforfunandprofit.com/posts/object-expressions/) になっています。
 
 ```fsharp
 type IMyInterface =
@@ -677,11 +677,11 @@ sendToJs [
 
 ### 動的型付け: これを読んじゃダメ!
 
-先に説明したツールを使うことで、Fable はすべてのコードがコンパイラによってチェックされるため、（インターフェイス契約が正しい限り）やっかいなバグに陥らないよう保証してくれます。もしコンパイルできない場合は、JS ライブラリが存在しないか、そのパスが良くないか、F#の実装に足りないものがあるかのどれかです。私たちは、24 時間 365 日使われるシステム、Web アプリや Node.js アプリで、Fable を利用しています。コンパイルできれば、99%の確率で何の問題もなく動作することが分かっています。
+先に説明したツールを使うことで、Fable はすべてのコードがコンパイラによってチェックされるため、（インターフェイス契約が正しい限り）やっかいなバグに陥らないよう保証してくれます。もしコンパイルできない場合は、JS ライブラリが存在しないか、そのパスが良くないか、F# の実装で足りないものがあるかのどれかです。私たちは、24 時間 365 日使われるシステム、Web アプリや Node.js アプリで、Fable を利用しています。コンパイルできれば、99%の確率で何の問題もなく動作することが分かっています。
 
 私たちのモットーは 「コンパイルできれば、動く！」です。
 
-しかし、私たちが述べたように、**相互運用は信頼の問題です**。もしあなたが JS のコードと F#のコードを信用しているならば、さらにチェックすることなく進めてもいいのかもしれませんね。たぶん。
+しかし、私たちが述べたように、**相互運用は信頼の問題です**。もしあなたが JS のコードと F# コードを信用しているならば、さらにチェックすることなく進めてもいいのかもしれませんね。たぶん。
 
 !!! caution
     免責事項: 自己責任で使ってください。
@@ -751,4 +751,4 @@ let bar2 = foo.Invoke(4, "a")
 
 #### ダイナミック・キャスト
 
-JS から型付けされていないオブジェクトを受け取るとき、それを特定の型にキャストしたいこともあるでしょう。そういった場合には、F#の `unbox` 関数や `Fable.Core.JsInterop` の `!!!` 演算子が使えます。これは F#の型チェッカーをバイパスしますが、**Fable はキャストが正しいかどうかを確認するための実行時チェック**を追加しない点に注意してください。
+JS から型付けされていないオブジェクトを受け取るとき、それを特定の型にキャストしたいこともあるでしょう。そういった場合には、F#  `unbox` 関数や `Fable.Core.JsInterop` の `!!!` 演算子が使えます。これは F# 型チェッカーをバイパスしますが、**Fable はキャストが正しいかどうかを確認するための実行時チェック**を追加しない点に注意してください。

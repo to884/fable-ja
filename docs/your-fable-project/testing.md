@@ -44,7 +44,7 @@ Jest.describe("基本的なテストを実行できます", fun () ->
 
 ### 実行
 
-テストを実行する前に、プロジェクトを JS に変換する必要がありますが、テストランナーは一般的に一つの大きなファイルよりも小さなファイルを持つことを好むので、Webpack でバンドルする必要はありません。そのため、Fable コンパイラを実行し、生成されたコードを出力ディレクトリに置くだけです。
+テストを実行する前に、プロジェクトを JS に変換する必要がありますが、テストランナーは一般的に一つの大きなファイルよりも小さなファイルを持つことを好むので、Webpack でバンドルする必要はありません。ですので、Fable コンパイラを実行し、生成されたコードを出力ディレクトリに置くだけです。
 
 ```sh
   dotnet fable src -o output
@@ -66,7 +66,7 @@ module.exports = {
 `root` はコンパイラの `outDir` と同じである必要があります。
 `testMatch` はテストするファイルのパターン名を表します。
 `coveragePathIgnorePatterns`, `testEnvironment`, `transform` はランナーのパフォーマンスを改善します。
-詳しくはJestのドキュメントを参照してください : [https://jestjs.io/docs/en/configuration](https://jestjs.io/docs/en/configuration)
+詳しくはJestのドキュメントを参照してください : [https://jestjs.io/docs/jp/configuration](https://jestjs.io/docs/en/configuration)
 
 これで、テストを実行できるようになりました。
 
@@ -105,7 +105,7 @@ dotnet fable watch src -o 出力
 npx jest --config=jest.config.js --watchAll
 ```
 
-パッケージ.json`にnpmスクリプトを追加します。
+`package.json` に npm スクリプトを追加します。
 
 ```json
 {
@@ -118,7 +118,7 @@ npx jest --config=jest.config.js --watchAll
 }
 ```
 
-私は、複数のコマンドを並列に実行するために `npm-run-all` を使用しています。なので、インストールしておくとよいでしょう。
+私は、複数のコマンドを並列に実行するために `npm-run-all` を使っています。これをインストールしておくとよいでしょう。
 
 ```sh
 npm install --save-dev npm-run-all

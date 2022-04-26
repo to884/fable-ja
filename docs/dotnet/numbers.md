@@ -1,6 +1,6 @@
 # 数値型
 
-Fable では、F#の数値型を使いますが、`int64`、`uint64`、`bigint`、`decimal`を除いて、すべて JS Number (64-bit floating type)に変換されます。
+Fable では、F# の数値型を使いますが、`int64`、`uint64`、`bigint`、`decimal`を除いて、すべて JS Number (64-bit floating type)に変換されます。
 
 Fable の数値は.NET のセマンティックとほぼ互換性がありますが、Javascript の型に変換すると、次のような結果になります。
 

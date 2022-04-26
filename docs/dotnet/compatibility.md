@@ -1,4 +1,4 @@
-# .NET と F#の互換性
+# .NET と F# 互換性
 
 Fable は、.NET BCL (Base Class Library)の一部のクラスと、FSharp.Core ライブラリのほとんどのサポートを実現しています。できるかぎり、Fable は.NET の型とメソッドをネイティブの JavaScript API に変換して、オーバーヘッドを最小限にとどめています。
 
@@ -33,9 +33,9 @@ Fable は、.NET BCL (Base Class Library)の一部のクラスと、FSharp.Core 
 
 - `System.Console.WriteLine` (フォーマットも可能)
 - `System.Diagnostics.Debug.WriteLine` (フォーマットあり)
-- `System.Diagnostics.Debug.Assert(condition: bool)` システム診断.デバッグ.アサート(condition: bool)
-- `システム.診断.デバッグ.Break()` の実行
-- システム.アクティベータ.CreateInstance<'T>()
+- `System.Diagnostics.Debug.Assert(condition: bool)`
+- `System.Diagnostics.Debug.Break()`
+- `System.Activator.CreateInstance<'T>()`
 
 数値型の変換や文字列のパースもサポートされていますので、[変換テスト](https://github.com/fable-compiler/Fable/blob/master/tests/Main/ConvertTests.fs) をチェックしてください。
 
@@ -78,7 +78,7 @@ FSharp.Core lib の以下の型と対応するモジュールも同様に JS に
 
 ## オブジェクト指向プログラミング
 
-F#のオブジェクト指向機能のほとんどは、Fable と互換性があります：インターフェースと抽象クラス、構造体、継承、オーバーローディングなど。ただし、[ES2015 クラス](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) のいくつかの制限のため、生成されたコードは代わりに [プロトタイプチェーン](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain) を使う点に注意してください。また、インスタンスメンバーはプロトタイプにアタッチされないので、ネイティブ JS コードからアクセスできないことに注意してください。このルールの例外は、**インターフェースと抽象メンバー**の実装です。
+F# のオブジェクト指向機能のほとんどは、Fable と互換性があります：インターフェースと抽象クラス、構造体、継承、オーバーローディングなど。ただし、[ES2015 クラス](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) のいくつかの制限のため、生成されたコードは代わりに [プロトタイプチェーン](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain) を使う点に注意してください。また、インスタンスメンバーはプロトタイプにアタッチされないので、ネイティブ JS コードからアクセスできないことに注意してください。このルールの例外は、**インターフェースと抽象メンバー**の実装です。
 
 ### 注意点 III
 

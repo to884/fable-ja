@@ -65,6 +65,7 @@ markdown_extensions:
   - meta                        # マークダウン内メタ情報: 有効
   - toc:
       toc_depth: 4              # 目次の深さ: h2
+      permalink: true           # パーマリンク: 有効
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -95,7 +96,7 @@ nav:
     - "新しいプロジェクトを開始する": "2-steps/your-first-fable-project.md"
   - "あなたの Fable プロジェクト":
     - "プロジェクトファイル": "your-fable-project/project-file.md"
-    - "Fable ライブラリを使う": "your-fable-project/use-a-fable-library.md"
+    - "Fable ライブラリを使おう": "your-fable-project/use-a-fable-library.md"
     - "Fable ライブラリを作ろう": "your-fable-project/author-a-fable-library.md"
     - "ビルドと実行": "your-fable-project/build-and-run.md"
     - "テスト": "your-fable-project/testing.md"

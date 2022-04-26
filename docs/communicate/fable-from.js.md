@@ -5,7 +5,7 @@ JavaScript アプリで Fable の力を借りたいときもあるでしょう�
 
 それによって、Fable で動かしながら、機能を 1 つずつ増やしていけるかもしれません。ところで、JavaScript から Fable を呼び出すには何が必要なのでしょうか？まず、生成された JS コードがどのようなものかを少々理解し、正しく呼び出せるようにしておく必要があります。
 
-> [Fable REPL](https://fable.io/repl/) を使って、F#コードの生成された JS を簡単に確認できることをお忘れなく！
+> [Fable REPL](https://fable.io/repl/) を使って、F# コードの生成された JS を簡単に確認できることをお忘れなく！
 
 ## 名前のマングリング
 
@@ -15,7 +15,7 @@ JS はオーバーロードや 1 つのファイルで複数のモジュール�
 - インターフェースと抽象メンバー
 - ルートモジュール内の関数と値
 
-ルートモジュールって何？F#では同一ファイル内に複数のモジュールがあっても構わないので、実際のメンバーを含む最初のモジュールをルートモジュールとし、他のモジュールにネストされないようにします。
+ルートモジュールって何？F# は同一ファイル内に複数のモジュールがあっても構わないので、実際のメンバーを含む最初のモジュールをルートモジュールとし、他のモジュールにネストされないようにします。
 
 ```fsharp
 // 名前空間が長くても関係なく、Fableは実際のコードを見つけたときだけカウントを開始します。
@@ -29,7 +29,7 @@ module Nested =
     let add (x: int) (y: int) = x * y
 ```
 
-F#では、1 つのファイルに複数のルートモジュールが存在することがあり、その場合、すべてがマングリングされます。もし、JS にコードを公開したいのであれば、このパターンは避けるべきでしょう。
+F# は、1 つのファイルに複数のルートモジュールが存在することがあり、その場合、すべてがマングリングされます。もし、JS にコードを公開したいのであれば、このパターンは避けるべきでしょう。
 
 ```fsharp
 namespace SharedNamespace
@@ -52,17 +52,17 @@ module Bar =
 
 ## 一般的な型とオブジェクト
 
-F#/.NET の型の中には、JS に対応するものがあります(/../dotnet/compatibility.html)。Fable はこれを利用して、よりパフォーマンスが高く、バンドルサイズを小さくできるネイティブ型にコンパイルします。また、F#と JS の間でデータをやり取りする際の相互運用性を高めるために利用したりもします。最も重要な共通型は次のとおりです。
+F# と .NET の型の中には、JS に対応するものがあります(/../dotnet/compatibility.html)。Fable はこれを利用して、よりパフォーマンスが高く、バンドルサイズを小さくできるネイティブ型にコンパイルします。また、F# と JS の間でデータをやり取りする際の相互運用性を高めるために利用したりもします。最も重要な共通型は次のとおりです。
 
-- **文字列とブーリアン**は、F#と JS で同じ挙動をします。
+- **文字列とブーリアン**は、F# と JS で同じ挙動をします。
 - **文字型**は、長さ 1 の JS 文字列としてコンパイルされます。しかし，`int16 '家'`のように明示的に変換すれば，`char` を数値として使用することができます．
 - **数値型** は、 `long`, `decimal` と `bigint` を除いて、JS の数値にコンパイルされます。
 - **配列** (および `ResizeArray`) は JS 配列にコンパイルされます。数値配列はほとんどの場合 [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) にコンパイルされますが、インデックス作成、イテレート、マッピングのような一般的な操作では違いはないはずです。この挙動は `typedArrays` オプション](https://www.npmjs.com/package/fable-loader#options) で無効にできます。
 - あらゆる **IEnumerable** (または `seq`) は JS でまるで [Iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#Iterables) のようにトラバースできます。
 - **DateTime** は JS の `Date` にコンパイルされます。
 - **Regex** は、JS `RegExp` にコンパイルされます。
-- Mutable **dictionaries** (not F# maps) は [ES2015 Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) にコンパイルされます。
-- Mutable **hashsets** (not F# sets) は、[ES2015 Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) にコンパイルされます。
+- Mutable **dictionaries** (F# maps ではありません) は [ES2015 Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) にコンパイルされます。
+- Mutable **hashsets** (F# sets ではありません) は、[ES2015 Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) にコンパイルされます。
 
 > 辞書やハッシュセットがカスタムまたは構造的な等式を必要とする場合、Fable はカスタム型を生成しますが、それは JS マップやセットと同じプロパティを共有することになります。
 
@@ -154,9 +154,9 @@ let useEffect (effect: unit -> (unit -> unit)): unit =
 useEffect myEffect
 ```
 
-この問題は、コンパイラが `unit -> unit -> unit` と `unit -> (unit -> unit)` を区別できず、二項ラムダ（二つの引数を受け取る関数）としか見れないということです。これは、すべてのコードが F#であれば問題にはなりませんが、このケースのように関数を JS に送信している場合、Fable は間違ってそれをカリー化解除しようとし、予期しない結果を引き起こします。
+この問題は、コンパイラが `unit -> unit -> unit` と `unit -> (unit -> unit)` を区別できず、二項ラムダ（二つの引数を受け取る関数）としか見れないということです。これは、すべてのコードが F# あれば問題にはなりませんが、このケースのように関数を JS に送信している場合、Fable は間違ってそれをカリー化解除しようとし、予期しない結果を引き起こします。
 
-このようなケースを解消するために、`System.Func`のような [delegate](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/delegates) を使うと、カリー化されないようにできます。
+このようなケースを解消するために、`System.Func`のような [delegate](https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/delegates) を使うと、カリー化されないようにできます。
 
 ```fsharp
 open System
@@ -231,7 +231,7 @@ library: 'MyFableLib'
 これは、Fable のコードを`MyFableLib`というグローバル変数から呼びたいことを Webpack に伝えています。これでおしまいです。
 
 !!! info
-プロジェクトの **最後のファイル** にあるパブリック関数と値のみが公開されます。
+    プロジェクトの **最後のファイル** にあるパブリック関数と値のみが公開されます。
 
 #### 試してみましょう。
 

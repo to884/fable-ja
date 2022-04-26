@@ -1,4 +1,4 @@
-# Fable ライブラリを使う
+# Fable ライブラリを使おう
 
 .NET のパッケージマネージャのデファクトである [NuGet](https://www.nuget.org/) を使ってライブラリを利用することが少なくありません。
 
@@ -14,7 +14,7 @@
 Fable のライブラリを呼び出すには、2 つの方法があります。
 
 1. プロジェクトファイル内で直接参照する
-2. [Paket](https://fsprojects.github.io/Paket/)を使う。
+2. [Paket](https://fsprojects.github.io/Paket/) を使う。
 
 ## Option 1: プロジェクトファイルからライブラリを手動で参照する
 
@@ -48,6 +48,6 @@ dotnet SDK では、.fsproj を手動で編集せずにこの操作を行うた�
 
 Paket の使用方法は、[公式ドキュメント](https://fsprojects.github.io/Paket/get-started.html) に従えば、一目瞭然です。
 
-しかし、あなたにとってより簡単になるように、私たちは [サンプル](https://github.com/fable-compiler/fable2-samples/tree/master/withpaket) を作りました。これは、あなたが paket のドキュメントを読んでいる間、役に立つことでしょう。
+さらに、より簡単に使えるよう、私たちは [サンプル](https://github.com/fable-compiler/fable2-samples/tree/master/withpaket) を作りました。これは、あなたが paket のドキュメントを読んでいる間、役に立つことでしょう。
 
 たいていは、Paket を使い始めるには数分しかかかりません。

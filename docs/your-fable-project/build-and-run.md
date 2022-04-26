@@ -4,7 +4,7 @@
 
 しかし、このプロセスは、まだ開発を進めている段階なのか、それともすでにプロジェクトを本番環境にデプロイする準備をしている段階なのかによって変わってきます。開発段階では、最適化にはあまりこだわらず、変更した結果を画面上ですぐに確認できるよう、高速な ビルドが欲しいところです。一方、本番環境では、より最適化された JS コードを得るために、より遅いビルドを我慢することになります。
 
-Webpack の設定は少し難しいかもしれません。ほとんどの [サンプル](https://github.com/fable-compiler/fable3-samples)には `webpack.config.js` ファイルがあり、参考にできます。また、[webpack config template for Fable](https://github.com/fable-compiler/webpack-config-template/blob/master/webpack.config.js) もあり、ほとんどのプロジェクトで動作するよう用意されています。
+Webpack の設定は少し難しいかもしれません。ほとんどの [サンプル](https://github.com/fable-compiler/fable3-samples) には `webpack.config.js` ファイルがあり、参考にできます。また、[webpack config template for Fable](https://github.com/fable-compiler/webpack-config-template/blob/master/webpack.config.js) もあり、ほとんどのプロジェクトで動作するよう用意されています。
 
 ## 開発
 
@@ -28,7 +28,7 @@ webpack-dev-server は生成されたファイルがメモリ上にあり、実�
 
 ## 本番環境
 
-デプロイ用のファイルを準備するとき、特別なサーバーは必要ありません。Webpack CLIを本番モードで直接呼び出して、[JS minification](https://webpack.js.org/configuration/optimization#optimizationminimize): `dotnet fable src --run webpack --mode production`などの最適化を有効にすることができます。
+デプロイ用のファイルを準備するとき、特別なサーバーは必要ありません。Webpack CLIを本番モードで直接呼び出して、[JS minification](https://webpack.js.org/configuration/optimization#optimizationminimize): `dotnet fable src --run webpack --mode production` などの最適化を有効にすることができます。
 
 > 前述のように、ほとんどの設定では `--mode` 引数を明示的に設定する必要はありません。また、この操作のために "build" (場合によっては "deploy") という npm-script を用意するのが一般的です。
 
@@ -43,4 +43,4 @@ Webpack は一度だけ実行され、生成されたファイルは [output.pat
 
 ## Webpack は使いたくない
 
-次に、選んだサンプルによって、ビルドオプションが違う場合があります。詳細は、選択したサンプルの README ファイルを参照してください。
+ときおり、選んだサンプルによって、ビルドオプションが違う場合があります。詳細は、使いたいサンプルの README ファイルを参照してください。

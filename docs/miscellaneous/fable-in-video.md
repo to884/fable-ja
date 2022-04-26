@@ -40,7 +40,7 @@
 - [@Microsoft 2017: Full Stack F# with Fable - Alfonso garcia Caro](https://www.youtube.com/watch?v=hf0gepgb0Dc)
 - [F# Hacking - Fable, Ionide, FSAC](https://www.youtube.com/watch?v=yTrcY8jGFmg)
 - [NET Conf 2017 Full Stack F# with Fable](https://www.youtube.com/watch?v=HEX-BPOgA_M)
-- [F#, Fable and Ionide hacking - adding profiler to VSCode](https://www.youtube.com/watch?v=K-13gtMevxc)
+- [F#  Fable and Ionide hacking - adding profiler to VSCode](https://www.youtube.com/watch?v=K-13gtMevxc)
 - [Visualizing Olympic Medals with F# and Fable](https://www.youtube.com/watch?v=M9xk7KkSY1A)
 - [Modern app development with Fable and React Native](https://www.youtube.com/watch?v=fmaPeUBWZuM)
 
