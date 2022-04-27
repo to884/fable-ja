@@ -4,15 +4,15 @@ site_author: Toshiki Hayashi
 
 docs_dir: 'docs'
 copyright: "Copyright &copy; 2022 Toshiki Hayashi"
-#  repo_url: https://github.com/to884/repo
-#  repo_name: to884/repo
+repo_url: https://github.com/to884/fable-ja
+repo_name: to884/fable-ja
+
 theme:
   name: material                # Material for MkDocs
-  custom_dir: overrides         # カスタマイズ用ディレクトリ
+#  custom_dir: overrides         # カスタマイズ用ディレクトリ
   language: ja                  # 日本語検索: 有効
   icon:
     logo: fontawesome/solid/book
-    repo: fontawesome
   font:
     text: Kosugi
 #    text: Sawarabi Gothic
@@ -43,9 +43,9 @@ theme:
     - toc.follow                # 目次の追従: 有効
 plugins:
   - search:
-      separator: '[\s\-\.]+'    # 単語のセパレーターをスペース、ハイフン、ドットに設定
-#  - git-revision-date-localized # Git との連携(日付など表示)
-#      type: timeago
+      separator: '[\s\-\.]+'      # 単語のセパレーターをスペース、ハイフン、ドットに設定
+  - git-revision-date-localized:  # Git との連携(日付など表示)
+      type: timeago
 
 markdown_extensions:
   - abbr                        # 略語
@@ -81,7 +81,6 @@ extra_javascript:
 extra_css:
   - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
   - "stylesheets/theme.css"
-#  - "stylesheets/fonts.css"
 
 nav:
   - "はじめに":
